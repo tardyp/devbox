@@ -1,0 +1,25 @@
+spec:
+  containers:
+    - name: android-dev
+      image: tardyp/android_docker
+      command:
+        - /bin/bash
+      args:
+        - '-c'
+        - >-
+          /usr/bin/node /cloud9/server.js --listen 0.0.0.0 --port 8080 -w
+          /workspace
+      volumeMounts:
+        - name: host-path-0
+          mountPath: /workspace
+          readOnly: false
+      stdin: false
+      tty: false
+  restartPolicy: Always
+  volumes:
+    - name: host-path-0
+      hostPath:
+        path: /mnt/disks/workspace
+
+# This container declaration format is not public API and may change without notice. Please
+# use gcloud command-line tool or Google Cloud Console to run Containers on Google Compute Engine.

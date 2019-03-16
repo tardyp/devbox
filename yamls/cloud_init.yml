@@ -1,0 +1,6 @@
+#cloud-config
+
+bootcmd:
+- fsck.ext4 -tvy /dev/sdb]
+- mkdir -p /mnt/disks/workspace
+- mount -t ext4 -o discard,defaults /dev/sdb /mnt/disks/workspace
